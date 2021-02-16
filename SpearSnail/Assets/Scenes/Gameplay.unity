@@ -221,6 +221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 216131370}
   boundaryPercent: 0.1
+  easing: 0.01
 --- !u!1 &216131370
 GameObject:
   m_ObjectHideFlags: 0

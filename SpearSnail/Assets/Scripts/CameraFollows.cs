@@ -6,12 +6,15 @@ public class CameraFollows : MonoBehaviour
 {
     public GameObject player;
     public float boundaryPercent;
-    private float lBound, rBound;
+    public float easing;
+    private float lBound, rBound, uBound, dBound;
     // Start is called before the first frame update
     void Start()
     {
         lBound = boundaryPercent * Camera.main.pixelWidth;
         rBound = Camera.main.pixelWidth - lBound;
+        dBound = boundaryPercent * Camera.main.pixelHeight;
+        uBound = Camera.main.pixelHeight - dBound;
     }
 
     // Update is called once per frame
@@ -30,6 +33,16 @@ public class CameraFollows : MonoBehaviour
             {
                 pos.x += spriteLoc.x - rBound;
             }
+            if(spriteLoc.y < dBound)
+            {
+                pos.y -= dBound - spriteLoc.y;
+            }
+            else if (spriteLoc.y > uBound)
+            {
+                pos.y += spriteLoc.y - uBound;
+            }
+
+            pos = Vector3.Lerp(transform.position, pos, easing);
 
             transform.position = pos;
         }
