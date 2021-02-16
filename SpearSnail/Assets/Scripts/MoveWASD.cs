@@ -6,7 +6,7 @@ public class MoveWASD : MonoBehaviour
 {
     Rigidbody2D body;
     private float horizontal, vertical;
-    private float moveLimiter = 0.7f;
+    private float moveLimiter = 0.8f;
     public float moveSpeed = 5f;
     // Start is called before the first frame update
     void Start()
