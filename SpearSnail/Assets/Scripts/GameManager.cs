@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 
 public class GameManager : MonoBehaviour
@@ -10,9 +12,14 @@ public class GameManager : MonoBehaviour
 
     public GameObject dialogBox;
     public GameObject dialogText;
+    public int stamps;
+    public Text scoreText;
+
+    public string endGameScene;
+
     void Start()
     {
-        
+        scoreText.text = "Stamps: " + stamps;
     }
 
     // Update is called once per frame
@@ -43,6 +50,16 @@ public class GameManager : MonoBehaviour
     public void HideDialog()
     {
         dialogBox.SetActive(false);
+    }
+
+    public void collectStamps(int numStamps)
+    {
+        stamps += numStamps;
+        scoreText.text = "Stamps: " + stamps;
+        if (stamps == 5)
+        {
+            SceneManager.LoadScene(endGameScene);
+        }
     }
     
 }

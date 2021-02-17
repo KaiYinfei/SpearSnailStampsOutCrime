@@ -4,11 +4,13 @@ using UnityEngine;
 
 public class stampCollect : MonoBehaviour
 {
+    private GameManager gameLevelManager;
+    public int stampValue;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        gameLevelManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -21,6 +23,7 @@ public class stampCollect : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("Player"))
         {
+            gameLevelManager.collectStamps(stampValue);
             Destroy(gameObject);
         }
     }
